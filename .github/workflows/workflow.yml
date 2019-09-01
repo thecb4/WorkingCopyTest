@@ -21,6 +21,9 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: xcode-build
+      run: xcodebuild
+      if: ${{ matrix.os }} == "macOS-10.14"
 
   test:
 
@@ -37,6 +40,7 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+
 
   package:
 
