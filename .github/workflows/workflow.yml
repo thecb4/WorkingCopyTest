@@ -2,8 +2,6 @@ name: CI/CD
 
 on: [push]
 
-# https://abelsquidhead.com/index.php/2019/08/30/github-actions-2-0-is-here/
-
 jobs:
 
   build:
@@ -23,7 +21,7 @@ jobs:
         echo test, and deploy your project.
     - name: xcode-build
       env:
-        JOB_OS: ${{ toJson(strategy.matrix) }}
+        JOB_OS: ${{ toJson(matrix.os) }}
       run: xcodebuild
       if: "$JOB_OS" == "macOS-10.14"
       
