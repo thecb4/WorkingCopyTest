@@ -20,11 +20,9 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: xcode-build
-      env:
-        JOB_OS: ${{ toJson(matrix.os) }}
+      if: matrix.os == "macOS-10.14"
       run: xcodebuild
-      if: "$JOB_OS" == "macOS-10.14"
-      
+
 
   test:
 
