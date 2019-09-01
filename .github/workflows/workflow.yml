@@ -19,7 +19,7 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-    - name: xcode-build
+    - name: xcode-build --version
       if: matrix.os == 'macOS-10.14'
       run: xcodebuild
 
