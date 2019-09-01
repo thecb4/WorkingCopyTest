@@ -19,9 +19,13 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-    - name: macOS
+    - name: xcode
       if: matrix.os == 'macOS-10.14'
       run: xcodebuild -version
+    - name: swift
+      if: matrix.os == 'macOS-10.14'
+      run: swift --version
+
 
 
   test:
