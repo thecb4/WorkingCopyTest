@@ -26,6 +26,7 @@ jobs:
         JOB_OS: ${{ toJson(strategy.matrix) }}
       run: xcodebuild
       if: "$JOB_OS" == "macOS-10.14"
+      
 
   test:
 
