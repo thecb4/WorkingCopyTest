@@ -1,6 +1,8 @@
-name: CI
+name: CI/CD
 
 on: [push]
+
+# https://abelsquidhead.com/index.php/2019/08/30/github-actions-2-0-is-here/
 
 jobs:
 
