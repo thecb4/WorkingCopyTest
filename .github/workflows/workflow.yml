@@ -21,7 +21,7 @@ jobs:
         echo test, and deploy your project.
     - name: macOS
       if: matrix.os == 'macOS-10.14'
-      run: xcodebuild --version
+      run: xcodebuild -version
 
 
   test:
