@@ -24,8 +24,8 @@ jobs:
         swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
       if: matrix.os != 'macOS-10.14'
     
-    - name: Run swift Version    
-      run: swift --version
+    - name: Build    
+      run: swift build
       
 #    - name: Run a multi-line script
 #      run: |
