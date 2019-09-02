@@ -18,7 +18,7 @@ jobs:
         os: [ubuntu-18.04]
     
     steps:
-    - uses: actions/checkout@v1
+    #- uses: actions/checkout@v1
     
     - name: Configure git
       run: |
@@ -32,10 +32,12 @@ jobs:
     
     # https://github.com/actions/checkout/issues/6
     - name: Prepare repository
-      run: git checkout "${GITHUB_REF:11}"
+      run: git checkout "$(echo ${{ github.ref }} | sed -E 's|refs/[a-zA-Z]+/||')"
       
-    #- name: Update the remote origin
-    #  run: git remote set-url origin https://$WK_TOKEN:x-oauth-basic@github.com/thecb4/WorkingCopyTest
+    - name: Update the remote origin
+      env:
+        GITHUB_TOKEN: ${{ secrets.WK_TOKEN }}
+      run: git remote set-url origin "https://$GITHUB_TOKEN:x-oauth-basic@github.com/thecb4/WorkingCopyTest"
     
     - name: Create new swift package    
       run: swift package init --type executable
@@ -43,8 +45,11 @@ jobs:
     - name: Add new files to repository
       run: git add . && git commit -m "initializing work"
       
-    - name: Add and commit changes
-      uses: elstudio/actions-js-build/commit@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.WK_TOKEN }}
-        # PUSH_BRANCH: 'init'
+    - name: Push repo
+      run: git push origin init
+      
+ #   - name: Add and commit changes
+ #     uses: elstudio/actions-js-build/commit@v2
+ #     env:
+ #       GITHUB_TOKEN: ${{ secrets.WK_TOKEN }}
+ #       # PUSH_BRANCH: 'init'
