@@ -1,0 +1,27 @@
+name: Initialize project
+
+on:
+  push:
+    branches:
+      - init
+    # file paths to consider in the event. Optional; defaults to all.
+    # paths:
+    #  - 'test/*'
+    
+jobs:
+
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-10.14]
+    
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Create new swift package    
+      run: swift package init --type executable
+      
+    - name: push work back to github
+      run: git config --get remote.origin.url
