@@ -20,6 +20,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
+    - name: Setup Swift
+      uses: adtrevor/setup-swift@v0.1-alpha
+      with:
+        swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
+    
     # https://github.com/actions/checkout/issues/6
     - name: Prepare repository
       run: git checkout "${GITHUB_REF:11}"
