@@ -20,6 +20,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
+    # https://github.com/actions/checkout/issues/6
+    - name: Prepare repository
+      run: git checkout "${GITHUB_REF:11}"
+    
     - name: Create new swift package    
       run: swift package init --type executable
       
