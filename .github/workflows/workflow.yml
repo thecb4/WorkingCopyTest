@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
-    - name: Linux Swift Build
+    - name: Install Swift on Linux
       uses: adtrevor/setup-swift@v0.1-alpha
       with:
         swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
@@ -35,9 +35,9 @@ jobs:
 #        echo Add other actions to build,
 #        echo test, and deploy your project.
 
-    - name: xcode build
-      if: matrix.os == 'macOS-10.14'
-      run: xcodebuild -version
+#    - name: xcode build
+#      if: matrix.os == 'macOS-10.14'
+#      run: xcodebuild -version
 #    - name: macOS swift build
 #      if: matrix.os == 'macOS-10.14'
 #      run: swift --version
@@ -53,7 +53,14 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
+
+    - name: Install Swift on Linux
+      uses: adtrevor/setup-swift@v0.1-alpha
+      with:
+        swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
+      if: matrix.os != 'macOS-10.14'
+      
+    - name: Swift test (skip build)
       run: swift test --skip-build
 
   package:
