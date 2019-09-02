@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macOS-10.14]
+        os: [ubuntu-18.04]
     
     steps:
     - uses: actions/checkout@v1
@@ -30,10 +30,10 @@ jobs:
     - name: Create new swift package    
       run: swift package init --type executable
       
-    - name: Add new files to repository
-      run: git add .
+    #- name: Add new files to repository
+    #  run: git add .
       
-    - name: Commit changes
+    - name: Add and commit changes
       uses: elstudio/actions-js-build/commit@v2
       env:
         GITHUB_TOKEN: ${{ secrets.WK_TOKEN }}
