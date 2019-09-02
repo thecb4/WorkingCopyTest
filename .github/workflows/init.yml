@@ -24,17 +24,17 @@ jobs:
     - name: Prepare repository
       run: git checkout "${GITHUB_REF:11}"
       
-    - name: Update the remote origin
-      run: git remote set-url origin https://$WK_TOKEN:x-oauth-basic@github.com/thecb4/WorkingCopyTest
+    #- name: Update the remote origin
+    #  run: git remote set-url origin https://$WK_TOKEN:x-oauth-basic@github.com/thecb4/WorkingCopyTest
     
     - name: Create new swift package    
       run: swift package init --type executable
       
     - name: Add new files to repository
-      run: git add . && git commit -m "initializing swift pacakge"
+      run: git add .
       
-    - name: Checking the git status
-      run: git status
-      
-    - name: push work back to github
-      run: git push origin init:init
+    - name: Commit changes
+      uses: elstudio/actions-js-build/commit@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.WK_TOKEN }}
+        PUSH_BRANCH: 'init'
