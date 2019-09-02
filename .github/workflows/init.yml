@@ -35,8 +35,8 @@ jobs:
     - name: Create new swift package    
       run: swift package init --type executable
       
-    #- name: Add new files to repository
-    #  run: git add .
+    - name: Add new files to repository
+      run: git add . && git commit -m "initializing work"
       
     - name: Add and commit changes
       uses: elstudio/actions-js-build/commit@v2
