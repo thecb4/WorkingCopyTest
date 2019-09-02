@@ -15,8 +15,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Linux Swift Build
       uses: adtrevor/setup-swift@v0.1-alpha
-        with:
-          swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
+      with:
+        swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
       run: swift --version
 #    - name: Run a multi-line script
 #      run: |
