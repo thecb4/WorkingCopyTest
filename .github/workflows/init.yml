@@ -24,4 +24,4 @@ jobs:
       run: swift package init --type executable
       
     - name: push work back to github
-      run: git config --get remote.origin.url
+      run: git push origin init
