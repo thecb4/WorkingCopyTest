@@ -47,4 +47,4 @@ jobs:
       uses: elstudio/actions-js-build/commit@v2
       env:
         GITHUB_TOKEN: ${{ secrets.WK_TOKEN }}
-        PUSH_BRANCH: 'init'
+        # PUSH_BRANCH: 'init'
