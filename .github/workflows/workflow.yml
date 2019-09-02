@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  "Continuous Integration":
 
     runs-on: ${{ matrix.os }}
     strategy:
@@ -30,6 +30,9 @@ jobs:
     - name: Build    
       run: swift build
       
+    - name: Test
+      run: swift test --skip-build
+      
 #    - name: Run a multi-line script
 #      run: |
 #        echo Add other actions to build,
@@ -44,53 +47,53 @@ jobs:
 
 
 
-  test:
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-14.04, ubuntu-18.04, macOS-10.14]
-    
-    steps:
-    - uses: actions/checkout@v1
-
-    - name: Install Swift on Linux
-      uses: adtrevor/setup-swift@v0.1-alpha
-      with:
-        swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
-      if: matrix.os != 'macOS-10.14'
-      
-    - name: Swift test (skip build)
-      run: swift test --skip-build
-
-  package:
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-14.04, ubuntu-18.04, macOS-10.14]
-    
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-        
-  deploy:
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-14.04, ubuntu-18.04, macOS-10.14]
-    
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+#  test:
+#
+#    runs-on: ${{ matrix.os }}
+#    strategy:
+#      matrix:
+#        os: [ubuntu-14.04, ubuntu-18.04, macOS-10.14]
+#    
+#    steps:
+#    - uses: actions/checkout@v1
+#
+#    - name: Install Swift on Linux
+#      uses: adtrevor/setup-swift@v0.1-alpha
+#      with:
+#        swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
+#      if: matrix.os != 'macOS-10.14'
+#      
+#    - name: Swift test (skip build)
+#      run: swift test --skip-build
+#
+#  package:
+#
+#    runs-on: ${{ matrix.os }}
+#    strategy:
+#      matrix:
+#        os: [ubuntu-14.04, ubuntu-18.04, macOS-10.14]
+#    
+#    steps:
+#    - uses: actions/checkout@v1
+#    - name: Run a one-line script
+#      run: echo Hello, world!
+#    - name: Run a multi-line script
+#      run: |
+#        echo Add other actions to build,
+#        echo test, and deploy your project.
+#        
+#  deploy:
+#
+#    runs-on: ${{ matrix.os }}
+#    strategy:
+#      matrix:
+#        os: [ubuntu-14.04, ubuntu-18.04, macOS-10.14]
+#    
+#    steps:
+#    - uses: actions/checkout@v1
+#    - name: Run a one-line script
+#      run: echo Hello, world!
+#    - name: Run a multi-line script
+#      run: |
+#        echo Add other actions to build,
+#        echo test, and deploy your project.
