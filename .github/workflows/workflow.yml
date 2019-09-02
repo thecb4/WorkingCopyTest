@@ -18,12 +18,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
-    - name: Install Swift on Linux
+    - name: Setup Swift
       uses: adtrevor/setup-swift@v0.1-alpha
       with:
         swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
-      if: matrix.os != 'macOS-10.14'
-      
+              
     - name: Update package
       run: swift package update
     
