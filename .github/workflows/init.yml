@@ -23,5 +23,8 @@ jobs:
     - name: Create new swift package    
       run: swift package init --type executable
       
+    - name: Add new files to repository
+      run: git commit -am "initializing swift pacakge"
+      
     - name: push work back to github
       run: git push origin init:init
