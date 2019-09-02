@@ -25,7 +25,7 @@ jobs:
       run: git checkout "${GITHUB_REF:11}"
       
     - name: Update the remote origin
-      run: git remote set-url origin https://$WK_TOKEN:x-oauth-basic@github.com/thecb/WorkingCopyTest
+      run: git remote set-url origin https://$WK_TOKEN:x-oauth-basic@github.com/thecb4/WorkingCopyTest
     
     - name: Create new swift package    
       run: swift package init --type executable
