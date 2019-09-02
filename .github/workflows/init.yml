@@ -26,5 +26,8 @@ jobs:
     - name: Add new files to repository
       run: git add . && git commit -m "initializing swift pacakge"
       
+    - name: Checking the git status
+      run: git status
+      
     - name: push work back to github
-      run: git push origin init
+      run: git push origin init:init
