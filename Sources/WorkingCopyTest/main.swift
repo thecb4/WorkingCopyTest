@@ -5,4 +5,5 @@ import Logging
 let logger = Logger(label: "com.example.BestExampleApp.main")
 
 // 3) we're now ready to use it
-logger.info("Hello World!")
+//logger.info("Hello World!")
+print("Hello World!")
