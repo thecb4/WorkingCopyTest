@@ -34,7 +34,7 @@ final class WorkingCopyTestTests: XCTestCase {
         RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         
-        let formattedDate = RFC3339DateFormatter.format(date)
+        let formattedDate = RFC3339DateFormatter.string(from: date)
 
         XCTAssertEqual(output, "\(formattedDate) Hello, world!\n")
     }
