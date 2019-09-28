@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  Continuous-Integration:
+  Swift:
 
     runs-on: ${{ matrix.os }}
     strategy:
@@ -33,6 +33,31 @@ jobs:
       
     - name: Test
       run: swift test
+      
+  Xcode:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-10.14]
+    
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Setup Swift
+      uses: adtrevor/setup-swift@v0.1-alpha
+      with:
+        swift-version: '5.0.2' # Currently, you must specify a specific Swift version (no version range)
+      if: matrix.os == 'ubuntu-16.04' || matrix.os == 'ubuntu-18.04'
+              
+    - name: Update package
+      run: swift package update
+    
+    - name: Build    
+      run: xcodebuild
+      
+    - name: Test
+      run: xcodebuild test
       
 #    - name: Run a multi-line script
 #      run: |
