@@ -27,8 +27,16 @@ final class WorkingCopyTestTests: XCTestCase {
         let output = String(data: data, encoding: .utf8)
         
         let date = Date()
+        
+        let RFC3339DateFormatter = DateFormatter()
+        
+        RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        let formattedDate = RFC3339DateFormatter.format(date)
 
-        XCTAssertEqual(output, "\(date) Hello, world!\n")
+        XCTAssertEqual(output, "\(formattedDate) Hello, world!\n")
     }
 
     /// Returns path to the built products directory.
