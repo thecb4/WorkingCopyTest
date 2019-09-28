@@ -28,10 +28,12 @@ final class WorkingCopyTestTests: XCTestCase {
         
         let date = Date()
         
+        // https://stackoverflow.com/questions/35700281/date-format-in-swift
+        
         let RFC3339DateFormatter = DateFormatter()
         
         //RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         //RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         
         let formattedDate = RFC3339DateFormatter.string(from: date)
