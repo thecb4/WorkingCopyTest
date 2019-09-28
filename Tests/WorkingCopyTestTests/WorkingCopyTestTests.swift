@@ -38,7 +38,7 @@ final class WorkingCopyTestTests: XCTestCase {
         
         let formattedDate = RFC3339DateFormatter.string(from: date)
 
-        XCTAssertEqual(output, "\(formattedDate) Hello, world!\n")
+        XCTAssertEqual(output, "\(formattedDate) info: Hello, world!\n")
     }
 
     /// Returns path to the built products directory.
